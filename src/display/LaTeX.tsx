@@ -1,5 +1,5 @@
 import * as React from "react"
-import katex, { KatexOptions } from "katex"
+import { render, type KatexOptions } from "katex"
 import { vec } from "../vec"
 import { useTransformContext } from "../context/TransformContext"
 import { Theme } from "./Theme"
@@ -23,7 +23,7 @@ export function LaTeX({ at: center, tex, color = Theme.foreground, katexOptions 
 
   React.useEffect(() => {
     if (!ref.current) return
-    katex.render(tex, ref.current, katexOptions)
+    render(tex, ref.current, katexOptions)
   }, [katexOptions, tex])
 
   const pixelCenter = vec.add(vec.transform(center, combinedTransform), [-width / 2, -height / 2])
